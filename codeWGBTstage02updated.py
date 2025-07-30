@@ -5,14 +5,13 @@ from datetime import datetime, timedelta
 from metpy.calc import wind_speed
 from metpy.units import units
 import xarray as xr
-os.chdir('/scratch/malia0a/era5-land_subset/QINQINKONG-PyWBGT-b40942b/src/')
 from coszenith import coszda, cosza
 from WBGT import WBGT_Liljegren, WBGT_GCM
 from WBGT import Tg_Liljegren, Tnwb_Liljegren
 from WBGT import Tg_GCM, Tnwb_GCM
 import dask
 import dask.array as da
-import thermofeel # thermofeel.calculate_heat_index_adjusted_v2 (https://github.com/ecmwf/thermofeel/compare/master...masabhathini:thermofeel:master)
+import thermofeel # thermofeel.calculate_heat_index_adjusted_v2 (https://github.com/masabhathini/thermofeel)
 import pandas as pd
 from dask_mpi import initialize
 from dask.distributed import Client, wait
@@ -20,9 +19,8 @@ from wind2mdef import getexp_xarray, getwind2m
 
 
 ##############################
-resultdir = '/scratch/malia0a/era5-land_results/'
-#era5_land = '/project/k10048/from_k1090_malik/malik/era5-land'
-era5_land = '/project/k10036/malia0a/from_k1090_malik/malik/era5-land'
+resultdir = '/RESULTS/era5-land_results/'
+era5_land = '/INPUTDATA/era5-land'
 processingyear = sys.argv[1]
 #processingyear = '1951'
 processingyearP1 = str(int(processingyear) + 1) 
